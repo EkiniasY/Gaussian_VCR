@@ -1,0 +1,4 @@
+# ninja log v5
+1	9606	1779158447338233914	/root/autodl-tmp/Gaussian_5/submodules/simple-knn/build/temp.linux-x86_64-cpython-37/simple_knn.o	8f8aac2add4b9081
+1	15501	1779158453210518914	/root/autodl-tmp/Gaussian_5/submodules/simple-knn/build/temp.linux-x86_64-cpython-37/ext.o	3b2592ac518c9f56
+1	34086	1779158471823410598	/root/autodl-tmp/Gaussian_5/submodules/simple-knn/build/temp.linux-x86_64-cpython-37/spatial.o	48e2fd99804bf6ef
