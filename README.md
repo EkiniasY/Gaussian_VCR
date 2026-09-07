@@ -13,8 +13,12 @@ A lightweight compression framework for 3D Gaussian Splatting (3DGS) based on Vi
 
 ```bash
 git clone https://github.com/EkiniasY/Gaussian_VCR.git
-cd gaussian-vcr
+cd Gaussian_VCR
 pip install -r requirements.txt
+
+# Build CUDA extensions (required)
+pip install submodules/diff-gaussian-rasterization
+pip install submodules/simple-knn
 ```
 
 ### Dependencies
@@ -22,6 +26,10 @@ pip install -r requirements.txt
 - Python 3.7+
 - PyTorch 1.12+
 - CUDA 11.6+
+
+### Note on Submodules
+
+The `submodules/` directory contains **modified versions** of `diff-gaussian-rasterization` and `simple-knn` from the original 3DGS implementation. These have been extended with custom CUDA kernels (reduced 3dgs, variable SH bands, etc.) to support the VCR pruning method. They are included directly in this repository rather than as git submodules because the upstream versions are **not compatible** with this project.
 
 ## Usage
 
@@ -91,7 +99,9 @@ python full_eval.py -s <dataset_path> -m <model_path>
 ├── scene/                # Scene and camera handling
 ├── utils/                # Utility functions
 ├── lpipsPyTorch/         # LPIPS metric implementation
-└── submodules/           # CUDA rasterizer
+└── submodules/           # Modified CUDA extensions (see Note on Submodules)
+    ├── diff-gaussian-rasterization/  # Custom rasterizer with reduced 3dgs support
+    └── simple-knn/                   # Modified KNN implementation
 ```
 
 ## Datasets
@@ -137,4 +147,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting) - Original implementation
+- [diff-gaussian-rasterization](https://github.com/graphdeco-inria/diff-gaussian-rasterization) - Base CUDA rasterizer
+- [simple-knn](https://gitlab.inria.fr/bkerbl/simple-knn) - Base KNN implementation
 - [INRIA GRAPHDECO Team](https://team.inria.fr/graphdeco)
