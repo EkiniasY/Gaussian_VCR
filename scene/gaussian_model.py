@@ -640,8 +640,8 @@ class GaussianModel:
                 print(f"Warning: mercy_type={mercy_type} requires cameras. Skipping prune.")
                 return
             ecr, view_stability = self._compute_ecr_and_view_stability(cameras)
-            theta_ecr = 0.1    # VCR threshold: below this = occluded
-            theta_vs = 0.8     # CVF threshold: above this = stable-low-contribution
+            theta_ecr = 0.3    # VCR threshold: below this = occluded
+            theta_vs = 0.3     # CVF threshold: above this = stable-low-contribution
             if mercy_type == 'ecr_only':
                 mask = (ecr < theta_ecr).squeeze()
             elif mercy_type == 'view_stability_only':
